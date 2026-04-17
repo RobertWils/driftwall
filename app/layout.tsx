@@ -46,17 +46,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://www.intellistake.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-3 right-3 z-50 inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.06em] text-white/50 hover:text-white/80 hover:border-white/20 transition-all"
+          className="group fixed bottom-3 right-3 z-50 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-md transition-all hover:border-white/25 hover:bg-white/10"
         >
-          POWERED BY
+          <span className="text-[9px] font-semibold uppercase tracking-[0.08em] text-white/40 transition-colors group-hover:text-white/70">
+            Powered by
+          </span>
           <Image
             src="https://singularityventurehub.ai/assets/ISTK-logo-vertical-dark-BOGI81pH.png"
-            alt="Intellistake (ISTK) logo"
-            width={28}
-            height={28}
-            className="opacity-70"
+            alt="Intellistake"
+            width={20}
+            height={20}
+            className="opacity-60 transition-opacity group-hover:opacity-90"
             unoptimized
           />
+          <span className="text-[9px] font-semibold uppercase tracking-[0.08em] text-white/40 transition-colors group-hover:text-white/70">
+            Intellistake
+          </span>
         </a>
       </body>
     </html>

@@ -16,7 +16,9 @@ import { cn } from "@/lib/cn";
 
 const LINKS = [
   { href: "/", label: "Overview" },
+  { href: "/about", label: "About" },
   { href: "/scan", label: "Scanner" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/dashboard", label: "Dashboard" },
 ];
 
@@ -25,7 +27,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-navy-900/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-navy-900/80 backdrop-blur-xl">
+      <span aria-hidden className="nav-top-accent pointer-events-none absolute inset-x-0 top-0 h-0.5" />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
         <Link href="/" className="group flex items-center gap-1" aria-label="Driftwall home">
           <span className="font-semibold tracking-tight text-white">DW</span>
@@ -50,7 +53,7 @@ export function Nav() {
           ))}
           <Link
             href="/scan"
-            className="rounded-lg border border-teal/60 px-4 py-2 text-sm font-medium text-teal transition-all hover:bg-teal/10 hover:shadow-glow-sm"
+            className="early-access-btn rounded-lg border border-teal/60 bg-teal/5 px-4 py-2 text-sm font-medium text-teal transition-all hover:bg-teal/15"
           >
             Get Early Access
           </Link>

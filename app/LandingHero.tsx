@@ -79,12 +79,37 @@ export function LandingHero() {
   const { n: count, mounted } = useLiveCounter();
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="relative isolate flex flex-col items-start">
+      <span
+        aria-hidden
+        className="orb-float pointer-events-none absolute -z-10"
+        style={{
+          top: "-100px",
+          left: "-100px",
+          width: "600px",
+          height: "600px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+      <span
+        aria-hidden
+        className="hero-grid pointer-events-none absolute inset-0 -z-10 opacity-70"
+        style={{
+          maskImage:
+            "radial-gradient(ellipse at 30% 40%, black 30%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at 30% 40%, black 30%, transparent 75%)",
+        }}
+      />
+
       <motion.span
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/5 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-teal"
+        className="relative inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal/[0.08] px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-teal backdrop-blur-sm"
       >
         <span className="h-1.5 w-1.5 animate-pulseRing rounded-full bg-teal" />
         Agent Security · Public Beta
@@ -126,7 +151,8 @@ export function LandingHero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.85 }}
-        className="mt-8 inline-flex items-center gap-3 rounded-lg border border-white/10 bg-navy-800/60 px-4 py-2.5"
+        className="mt-8 inline-flex items-center gap-3 rounded-lg border border-teal/20 bg-teal/[0.08] px-4 py-2.5 backdrop-blur-md"
+        style={{ boxShadow: "0 0 20px rgba(0,212,255,0.1)" }}
       >
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-pulseRing rounded-full bg-teal opacity-75" />

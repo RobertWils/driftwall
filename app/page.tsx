@@ -102,8 +102,19 @@ export default function Page() {
           <div className="grid gap-6 md:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label} className="border-l border-teal/30 pl-5">
-                <p className="text-3xl font-semibold text-white sm:text-4xl">{s.value}</p>
-                <p className="mt-2 text-sm leading-snug text-white/70">{s.label}</p>
+                <p
+                  className="text-5xl font-black leading-none tracking-tight"
+                  style={{
+                    background: "linear-gradient(135deg, #ffffff 0%, #00D4FF 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  {s.value}
+                </p>
+                <p className="mt-3 text-sm leading-snug text-white/70">{s.label}</p>
                 <p className="mt-3 text-[10px] uppercase tracking-wider text-white/35">{s.source}</p>
               </div>
             ))}

@@ -38,24 +38,27 @@ export function Footer() {
       <div className="border-t border-white/5 py-5 text-center text-xs text-white/40">
         © {new Date().getFullYear()} Driftwall. Prototype.
       </div>
-      <div className="border-t border-white/10 py-8">
-        <a
-          href="https://singularityventurehub.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center gap-2 opacity-60 transition-opacity hover:opacity-100"
-        >
-          <Image
-            src="https://singularityventurehub.ai/brand/SVH_Primary%20Logo_Reverse_Transparent.png"
-            alt="Singularity Venture Hub"
-            width={80}
-            height={0}
-            sizes="80px"
-            style={{ height: "auto" }}
-            unoptimized
-          />
-          <span className="text-xs text-white/40">A Singularity Venture Hub company</span>
-        </a>
+      <div className="border-t border-white/10 py-10">
+        <div className="flex flex-col items-center">
+          <a
+            href="https://singularityventurehub.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex"
+          >
+            <Image
+              src="https://singularityventurehub.ai/brand/SVH_Primary%20Logo_Reverse_Transparent.png"
+              alt="Singularity Venture Hub"
+              width={140}
+              height={46}
+              className="opacity-90 transition-opacity hover:opacity-100"
+              unoptimized={true}
+            />
+          </a>
+          <p className="mt-2 text-xs text-white/50">
+            A Singularity Venture Hub Portfolio Company
+          </p>
+        </div>
       </div>
     </footer>
   );
