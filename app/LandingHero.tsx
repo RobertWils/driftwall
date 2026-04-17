@@ -121,7 +121,7 @@ export function LandingHero() {
         transition={{ duration: 0.5, delay: 0.05 }}
         className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl"
       >
-        Your AI Agents Are Running.
+        The first security platform
         <br />
         <motion.span
           initial={{ opacity: 0, y: 14 }}
@@ -129,7 +129,7 @@ export function LandingHero() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="bg-gradient-to-r from-teal via-teal-glow to-white bg-clip-text text-transparent"
         >
-          Are They Safe?
+          built for autonomous agents.
         </motion.span>
       </motion.h1>
 

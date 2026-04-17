@@ -12,8 +12,7 @@ export function Footer() {
             <span className="ml-2 text-sm uppercase tracking-[0.28em] text-white/50">Driftwall</span>
           </div>
           <p className="mt-4 max-w-sm text-sm text-white/55">
-            Agent security for teams shipping autonomous systems to production.
-            Red-team before deploy. Monitor at runtime. Prove it on-chain.
+            We secure what acts — not just what runs.
           </p>
         </div>
 
