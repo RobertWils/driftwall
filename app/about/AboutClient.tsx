@@ -180,6 +180,61 @@ export function AboutClient() {
         </div>
       </section>
 
+      {/* SVH Cohort */}
+      <section>
+        <motion.div {...fadeUp(0)} className="flex flex-col items-center text-center">
+          <SectionBadge>SVH Cohort · 2026</SectionBadge>
+          <h3 className="mt-5 text-2xl font-semibold text-white sm:text-3xl">
+            Driftwall is venture one.
+          </h3>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/65 sm:text-base">
+            We&apos;re building the full infrastructure stack for autonomous AI agents — security,
+            identity, and monetization. Built by Singularity Venture Hub.
+          </p>
+        </motion.div>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {[
+            { num: "01", pillar: "Security", name: "DRIFTWALL", status: "Live", tone: "teal" as const, href: "/" },
+            { num: "02", pillar: "Identity", name: "AGENTPASSPORT", status: "Coming Q2", tone: "warn" as const },
+            { num: "03", pillar: "Monetization", name: "METERMIND", status: "Coming Q3", tone: "warn" as const },
+          ].map((c, i) => {
+            const badgeClasses =
+              c.tone === "teal"
+                ? "border-teal/40 bg-teal/10 text-teal"
+                : "border-warn/40 bg-warn/10 text-warn";
+            const body = (
+              <GlassCard
+                hover={!!c.href}
+                className="h-full border-white/10 bg-navy-950/40"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs tracking-[0.2em] text-teal">
+                    {c.num} / {c.pillar}
+                  </span>
+                  <span
+                    className={`rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] ${badgeClasses}`}
+                  >
+                    {c.status}
+                  </span>
+                </div>
+                <p className="mt-6 text-base font-semibold tracking-wide text-white">{c.name}</p>
+              </GlassCard>
+            );
+            return (
+              <motion.div key={c.name} {...fadeUp(0.1 * (i + 1))}>
+                {c.href ? (
+                  <Link href={c.href} className="block h-full">
+                    {body}
+                  </Link>
+                ) : (
+                  body
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* CTA */}
       <motion.section {...fadeUp(0)} className="flex flex-col items-center gap-5 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent px-6 py-14 text-center">
         <h2 className="max-w-2xl text-2xl font-semibold text-white sm:text-3xl">
