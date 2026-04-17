@@ -122,9 +122,13 @@ export function PricingClient() {
       <section className="relative isolate">
         <span
           aria-hidden
-          className="orb-float pointer-events-none absolute left-1/2 -top-32 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(closest-side, rgba(0,212,255,0.1), transparent 70%)" }}
-        />
+          className="pointer-events-none absolute left-1/2 -top-32 -z-10 h-[500px] w-[500px] -translate-x-1/2"
+        >
+          <span
+            className="orb-float block h-full w-full rounded-full blur-[120px]"
+            style={{ background: "radial-gradient(closest-side, rgba(0,212,255,0.1), transparent 70%)" }}
+          />
+        </span>
         <motion.div {...fadeUp(0)} className="flex flex-col items-center text-center">
           <SectionBadge>Simple Pricing</SectionBadge>
           <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
