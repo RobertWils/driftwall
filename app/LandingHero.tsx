@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const PHRASES = [
+  "Agent-native. Action-level. Built for autonomous systems.",
   "Detecting prompt injection vulnerabilities...",
   "Scanning for privilege escalation paths...",
   "Testing memory poisoning resistance...",
@@ -112,7 +113,7 @@ export function LandingHero() {
         className="relative inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal/[0.08] px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-teal backdrop-blur-sm"
       >
         <span className="h-1.5 w-1.5 animate-pulseRing rounded-full bg-teal" />
-        Agent Security · Public Beta
+        Agent-Native Security · Public Beta
       </motion.span>
 
       <motion.h1
@@ -121,7 +122,7 @@ export function LandingHero() {
         transition={{ duration: 0.5, delay: 0.05 }}
         className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl"
       >
-        The first security platform
+        We secure what your agents
         <br />
         <motion.span
           initial={{ opacity: 0, y: 14 }}
@@ -129,7 +130,7 @@ export function LandingHero() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="bg-gradient-to-r from-teal via-teal-glow to-white bg-clip-text text-transparent"
         >
-          built for autonomous agents.
+          do — not what they say.
         </motion.span>
       </motion.h1>
 
@@ -143,8 +144,8 @@ export function LandingHero() {
         transition={{ duration: 0.5, delay: 0.7 }}
         className="mt-6 max-w-xl text-base leading-relaxed text-white/70"
       >
-        Stop agent drift before it becomes a breach. Driftwall red-teams your agent pre-deploy,
-        monitors every tool call at runtime, and writes a tamper-proof audit trail on-chain.
+        Traditional security tools secure code. Driftwall secures behaviour — every tool call, API
+        access, wallet transaction, and agent-to-agent interaction your autonomous systems make.
       </motion.p>
 
       <motion.div

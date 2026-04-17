@@ -14,9 +14,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Driftwall — Stop agent drift before it becomes a breach",
+  title: "Driftwall — Agent-Native Security for Autonomous AI",
   description:
-    "Pre-deploy red teaming, runtime monitoring, and on-chain audit trails for production AI agents.",
+    "Driftwall secures what your AI agents do — not just what they say. Pre-deploy red teaming, runtime action monitoring, and tamper-proof audit trails for autonomous systems.",
   metadataBase: new URL("https://driftwall.app"),
   openGraph: {
     title: "Driftwall — Agent Security Platform",

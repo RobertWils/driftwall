@@ -37,19 +37,19 @@ const FEATURES = [
   {
     Icon: ShieldCheck,
     title: "Pre-Deploy Red Team",
-    body: "Run 20 adversarial attack categories against your agent before it touches production.",
+    body: "20 attack categories including prompt injection, tool abuse, privilege escalation, and multi-agent trust attacks. Built for agents that act — not just respond.",
     badge: "SECURITY · PRE-DEPLOY",
   },
   {
     Icon: Activity,
     title: "Runtime Monitor",
-    body: "Live sidecar monitoring of every tool call, API access, and wallet transaction.",
+    body: "A lightweight sidecar watches every tool call, API access, and wallet transaction at action-level. Not output-level. Anomalies flagged before damage is done.",
     badge: "OBSERVABILITY · LIVE",
   },
   {
     Icon: Link2,
     title: "On-Chain Audit Trail",
-    body: "Tamper-proof audit log. Every agent action cryptographically signed and verifiable.",
+    body: "Every agent action cryptographically signed. Tamper-evident by design. When regulators ask what your agent did, you have proof — not logs.",
     badge: "COMPLIANCE · IMMUTABLE",
   },
 ];

@@ -12,7 +12,7 @@ export function Footer() {
             <span className="ml-2 text-sm uppercase tracking-[0.28em] text-white/50">Driftwall</span>
           </div>
           <p className="mt-4 max-w-sm text-sm text-white/55">
-            We secure what acts — not just what runs.
+            We secure what agents do — not just what they say.
           </p>
         </div>
 

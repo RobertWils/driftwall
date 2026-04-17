@@ -15,8 +15,8 @@ export default function ScanPage() {
           Red-Team Your Agent
         </h1>
         <p className="mt-4 max-w-2xl text-base text-white/65">
-          Paste your agent config or select a framework preset. Driftwall runs 20 adversarial attack
-          categories including the OWASP ASI Top 10, then scores the result.
+          Built for teams shipping autonomous agents. Paste your agent config or select a framework
+          — we test what it does, not just what it says.
         </p>
 
         <div className="mt-10">
