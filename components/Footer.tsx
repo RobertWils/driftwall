@@ -1,0 +1,62 @@
+import Link from "next/link";
+import Image from "next/image";
+
+export function Footer() {
+  return (
+    <footer className="mt-24 border-t border-white/5 bg-navy-950/40">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-8 md:grid-cols-4">
+        <div className="md:col-span-2">
+          <div className="flex items-center gap-1">
+            <span className="font-semibold text-white">DW</span>
+            <span className="font-semibold text-teal">|</span>
+            <span className="ml-2 text-sm uppercase tracking-[0.28em] text-white/50">Driftwall</span>
+          </div>
+          <p className="mt-4 max-w-sm text-sm text-white/55">
+            Agent security for teams shipping autonomous systems to production.
+            Red-team before deploy. Monitor at runtime. Prove it on-chain.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-xs uppercase tracking-[0.2em] text-white/40">Product</h4>
+          <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <li><Link href="/scan" className="hover:text-teal">Scanner</Link></li>
+            <li><Link href="/dashboard" className="hover:text-teal">Dashboard</Link></li>
+            <li><Link href="/scan" className="hover:text-teal">Audit Trail</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs uppercase tracking-[0.2em] text-white/40">Resources</h4>
+          <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <li><span className="opacity-60">OWASP ASI Top 10</span></li>
+            <li><span className="opacity-60">EU AI Act</span></li>
+            <li><span className="opacity-60">Changelog</span></li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-white/5 py-5 text-center text-xs text-white/40">
+        © {new Date().getFullYear()} Driftwall. Prototype.
+      </div>
+      <div className="border-t border-white/10 py-8">
+        <a
+          href="https://singularityventurehub.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center gap-2 opacity-60 transition-opacity hover:opacity-100"
+        >
+          <Image
+            src="https://singularityventurehub.ai/brand/SVH_Primary%20Logo_Reverse_Transparent.png"
+            alt="Singularity Venture Hub"
+            width={80}
+            height={0}
+            sizes="80px"
+            style={{ height: "auto" }}
+            unoptimized
+          />
+          <span className="text-xs text-white/40">A Singularity Venture Hub company</span>
+        </a>
+      </div>
+    </footer>
+  );
+}

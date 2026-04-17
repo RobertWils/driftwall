@@ -1,0 +1,45 @@
+// DRIFTWALL — Prisma schema
+// PostgreSQL via DATABASE_URL (e.g., Railway).
+// Run: pnpm prisma db push && pnpm db:seed
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AgentScan {
+  id             String   @id @default(cuid())
+  agentName      String   @default("Unknown Agent")
+  framework      String
+  configSnapshot String   @db.Text
+  riskScore      Int
+  attackResults  Json
+  email          String?
+  createdAt      DateTime @default(now())
+
+  @@index([framework])
+  @@index([createdAt])
+}
+
+model ThreatEvent {
+  id          String   @id @default(cuid())
+  agentId     String
+  eventType   String
+  severity    String
+  description String
+  timestamp   DateTime @default(now())
+
+  @@index([timestamp])
+  @@index([agentId])
+}
+
+model WaitlistEntry {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("scan")
+  createdAt DateTime @default(now())
+}
