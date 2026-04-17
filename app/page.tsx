@@ -1,4 +1,5 @@
 import { LandingHero } from "./LandingHero";
+import { RoadmapSection } from "./RoadmapSection";
 import { GlassCard, SectionBadge } from "@/components/GlassCard";
 import { ShieldCheck, Activity, Link2 } from "lucide-react";
 import Link from "next/link";
@@ -121,6 +122,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <RoadmapSection />
     </>
   );
 }
