@@ -13,6 +13,7 @@ import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
 const LINKS = [
   { href: "/", label: "Overview" },
@@ -25,6 +26,7 @@ const LINKS = [
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [showWaitlist, setShowWaitlist] = useState(false);
 
   const logoRef = useRef<HTMLDivElement>(null);
   const [logoOffset, setLogoOffset] = useState({ x: 0, y: 0 });
@@ -89,12 +91,13 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/scan"
+          <button
+            type="button"
+            onClick={() => setShowWaitlist(true)}
             className="early-access-btn rounded-lg border border-teal/60 bg-teal/5 px-4 py-2 text-sm font-medium text-teal transition-all hover:bg-teal/15"
           >
             Get Early Access
-          </Link>
+          </button>
         </nav>
 
         <button
@@ -123,16 +126,25 @@ export function Nav() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/scan"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setShowWaitlist(true);
+              }}
               className="mt-1 rounded-lg border border-teal/60 px-3 py-2 text-center text-sm font-medium text-teal"
             >
               Get Early Access
-            </Link>
+            </button>
           </div>
         </div>
       )}
+
+      <WaitlistModal
+        open={showWaitlist}
+        onClose={() => setShowWaitlist(false)}
+        source="nav-early-access"
+      />
     </header>
   );
 }

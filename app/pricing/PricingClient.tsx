@@ -11,9 +11,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GlassCard, SectionBadge } from "@/components/GlassCard";
-import { useToast } from "@/components/Toast";
+import { WaitlistModal } from "@/components/WaitlistModal";
 import { cn } from "@/lib/cn";
 
 type Feature = { label: string; included: boolean };
@@ -165,7 +165,11 @@ export function PricingClient() {
         </motion.div>
       </section>
 
-      <EarlyAccessModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <WaitlistModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        source="pricing-pro"
+      />
     </div>
   );
 }
@@ -331,97 +335,3 @@ function Accordion({ items }: { items: Array<{ q: string; a: string }> }) {
   );
 }
 
-function EarlyAccessModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [email, setEmail] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const toast = useToast();
-
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
-    }
-    if (open) document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.includes("@")) {
-      toast.show({ kind: "error", title: "Enter a valid email" });
-      return;
-    }
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email, source: "pricing-pro" }),
-      });
-      if (!res.ok) throw new Error("failed");
-      toast.show({
-        kind: "success",
-        title: "You're on the list",
-        description: "We'll email you when Pro opens up.",
-      });
-      setEmail("");
-      onClose();
-    } catch {
-      toast.show({ kind: "error", title: "Couldn't save email", description: "Try again in a moment." });
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          key="backdrop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-navy-950/80 backdrop-blur-sm px-4"
-          onClick={onClose}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            onClick={(e) => e.stopPropagation()}
-            className="glass w-full max-w-md rounded-2xl border-teal/30 p-6"
-            style={{ boxShadow: "0 0 40px rgba(0,212,255,0.18)" }}
-          >
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-white">Get early access to Pro</h3>
-              <button onClick={onClose} className="text-white/50 hover:text-white" aria-label="Close">
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <p className="mt-2 text-sm text-white/60">
-              Drop your email and we'll let you know the day Pro opens up.
-            </p>
-            <form onSubmit={submit} className="mt-5 flex flex-col gap-3">
-              <input
-                autoFocus
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@company.com"
-                className="w-full rounded-md border border-white/10 bg-navy-900/70 px-3 py-2.5 text-sm text-white placeholder:text-white/35 focus:border-teal/60 focus:outline-none"
-              />
-              <button
-                type="submit"
-                disabled={submitting}
-                className="early-access-btn rounded-md border border-teal/60 bg-teal/15 px-4 py-2.5 text-sm font-medium text-teal transition-all hover:bg-teal/25 disabled:opacity-50"
-              >
-                {submitting ? "Sending…" : "Request Early Access"}
-              </button>
-            </form>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
