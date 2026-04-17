@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import HeroBackground from "@/components/HeroBackground";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { ToastProvider } from "@/components/Toast";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
+        <HeroBackground />
         <ToastProvider>
           <Nav />
           <main className="relative">{children}</main>

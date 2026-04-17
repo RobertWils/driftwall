@@ -10,7 +10,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -26,14 +26,52 @@ export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  const logoRef = useRef<HTMLDivElement>(null);
+  const [logoOffset, setLogoOffset] = useState({ x: 0, y: 0 });
+  const [logoHovered, setLogoHovered] = useState(false);
+
+  const handleLogoMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = ((e.clientX - centerX) / rect.width) * 8;
+    const dy = ((e.clientY - centerY) / rect.height) * 8;
+    setLogoOffset({ x: dx, y: dy });
+  };
+
+  const handleLogoMouseEnter = () => setLogoHovered(true);
+
+  const handleLogoMouseLeave = () => {
+    setLogoHovered(false);
+    setLogoOffset({ x: 0, y: 0 });
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-navy-900/80 backdrop-blur-xl">
       <span aria-hidden className="nav-top-accent pointer-events-none absolute inset-x-0 top-0 h-0.5" />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
-        <Link href="/" className="group flex items-center gap-1" aria-label="Driftwall home">
-          <span className="font-semibold tracking-tight text-white">DW</span>
-          <span className="font-semibold text-teal transition-all group-hover:text-teal-glow">|</span>
-          <span className="ml-2 text-sm uppercase tracking-[0.28em] text-white/50">Driftwall</span>
+        <Link href="/" aria-label="Driftwall home">
+          <div
+            ref={logoRef}
+            onMouseMove={handleLogoMouseMove}
+            onMouseEnter={handleLogoMouseEnter}
+            onMouseLeave={handleLogoMouseLeave}
+            style={{
+              transform: `translate(${logoOffset.x}px, ${logoOffset.y}px)`,
+              transition: "transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), filter 0.2s ease",
+              filter: logoHovered ? "drop-shadow(0 0 12px rgba(0,212,255,0.6))" : "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ color: "#00D4FF", fontWeight: 800, fontSize: "18px" }}>DW</span>
+            <span style={{ color: "#00D4FF", opacity: 0.6, fontSize: "20px", fontWeight: 300 }}>|</span>
+            <span style={{ color: "white", fontWeight: 600, fontSize: "13px", letterSpacing: "0.15em" }}>
+              DRIFTWALL
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
