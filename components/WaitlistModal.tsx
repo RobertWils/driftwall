@@ -70,22 +70,25 @@ export function WaitlistModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/60 px-4 backdrop-blur-md"
+          className="fixed inset-0 z-[80] flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-md"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md rounded-2xl border border-white/10 bg-[#0d1f35] p-8"
-            style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,255,0.12)" }}
+            className="relative m-auto w-full max-w-md overflow-y-auto rounded-2xl border border-white/10 bg-[#0d1f35] p-8"
+            style={{
+              maxHeight: "90vh",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,255,0.12)",
+            }}
           >
             <button
               onClick={onClose}
               aria-label="Close"
-              className="absolute right-4 top-4 rounded-md p-1 text-white/40 transition-colors hover:bg-white/5 hover:text-white"
+              className="absolute right-4 top-4 z-10 rounded-md p-1 text-white/40 transition-colors hover:bg-white/5 hover:text-white"
             >
               <X className="h-5 w-5" />
             </button>
